@@ -1,0 +1,3 @@
+锁定时间：2026-11-10 22:10:52 CST
+cb47e744ab7902806a1ec0fbcef77464e19af23c2ca4e2fc31d8b20dcf16809b  PREREG4.md
+f13aa94ce8eadaf50d609758d8967ccb74235dac4c09fffa1eb978eafb521f18  confirm4_run.py
