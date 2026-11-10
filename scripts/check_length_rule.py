@@ -10,7 +10,9 @@ import os
 R = os.path.dirname(os.path.abspath(__file__))
 LEDGER = ["pilot1", "combined", "A_p17_old", "B_p17_new", "C_p13", "D_p19", "E_p23"] + \
     [d for d in sorted(glob.glob(os.path.join(R, "p[1-4]", "*"))) for d in [os.path.relpath(d, R)]] + \
-    [os.path.relpath(d, R) for d in sorted(glob.glob(os.path.join(R, "conf", "*")))]
+    [os.path.relpath(d, R) for d in sorted(glob.glob(os.path.join(R, "conf", "*")))] + \
+    [os.path.relpath(d, R) for d in sorted(glob.glob(os.path.join(R, "conf3", "*")))] + \
+    [os.path.relpath(d, R) for d in sorted(glob.glob(os.path.join(R, "conf4", "*")))]
 
 
 def note_of(reply):
