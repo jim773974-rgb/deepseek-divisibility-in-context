@@ -1,0 +1,3 @@
+PREREG.md 锁定时间：2026-11-10 14:46:53 CST
+SHA-256：2d89daced86c476dfa3e22211f03cb3c95ab63d724fd09d92e99ec74365ea47c
+校验方法：sha256sum PREREG.md（Windows：certutil -hashfile PREREG.md SHA256）
