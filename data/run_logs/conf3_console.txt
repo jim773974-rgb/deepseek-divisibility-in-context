@@ -1,0 +1,13 @@
+C0_13 21:29:10 periodic errors 50 / 100 api errors 0
+L_13 21:30:21 periodic errors 0 / 100 api errors 0
+F_13 21:31:33 periodic errors 0 / 100 api errors 0
+R_13 21:32:49 periodic errors 14 / 100 api errors 0
+C0_9 21:33:58 periodic errors 36 / 100 api errors 0
+L_9 21:35:03 periodic errors 0 / 100 api errors 0
+F_9 21:36:18 periodic errors 0 / 100 api errors 0
+R_9 21:37:32 periodic errors 6 / 100 api errors 0
+（第一次运行在 R_9 之后因工具 10 分钟时限中断，21:38:09 续跑阴性对照）
+NL_13 21:38:42 periodic errors 0 / 50 api errors 0
+NR_13 21:39:16 periodic errors 0 / 50 api errors 0
+NL_9 21:39:49 periodic errors 0 / 50 api errors 0
+NR_9 21:40:25 periodic errors 0 / 50 api errors 0
