@@ -246,7 +246,7 @@ class Budget:
 
 
 def get_key():
-    return open(os.path.join(HERE, ".deepseek_key")).read().strip()
+    return open(os.path.join(HERE, ".deepseek_key"), encoding="utf-8").read().strip()
 
 
 def balance():
@@ -323,7 +323,7 @@ def run(args):
     meta = {"model": args.model, "effort": args.effort, "runs": args.runs, "turns": args.turns,
             "balance_before": before, "balance_after": after, "miss": budget.miss, "hit": budget.hit,
             "out": budget.out, "finished_at": time.strftime("%F %T")}
-    json.dump(meta, open(os.path.join(args.out, "meta.json"), "w"), ensure_ascii=False, indent=1)
+    json.dump(meta, open(os.path.join(args.out, "meta.json"), "w", encoding="utf-8"), ensure_ascii=False, indent=1)
     print(json.dumps(meta, ensure_ascii=False))
 
 

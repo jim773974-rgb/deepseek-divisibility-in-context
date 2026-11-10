@@ -1,0 +1,17 @@
+balance before: 29.93 at 2026-11-10 15:07:33
+B1b done miss 71335 hit 10597829 out 323683
+[1]   Done                    python3 drift_v4.py run --name B1b --period 36 --turns 36 --runs 10 --parallel 4 --min-balance 3 --out conf/B1b
+B2b done miss 196187 hit 10473545 out 327341
+[2]-  Done                    python3 drift_v4.py run --name B2b --period 18 --turns 36 --runs 10 --parallel 4 --min-balance 3 --out conf/B2b
+B3b done miss 238440 hit 10433862 out 327123
+[3]+  Done                    python3 drift_v4.py run --name B3b --period 12 --turns 36 --runs 10 --parallel 4 --min-balance 3 --out conf/B3b
+balance after: 21.47 at 2026-11-10 15:19:09
+name | model/effort | trigger: fail/all (clean fail/clean n) | states calc fail/ok | other drift turns | slip turns
+B1b | deepseek-flash low seed 0 | t36: 0/10 (0/9) | calc 0/0, 0/10 | 1 | 1 | out 323683
+B2b | deepseek-flash low seed 0 | t18: 0/10 (0/10); t36: 1/10 (1/8) | calc 0/1, 5/19 | 2 | 1 | out 327341
+B3b | deepseek-flash low seed 0 | t12: 0/10 (0/10); t24: 0/10 (0/9); t36: 1/10 (1/6) | calc 0/1, 2/29 | 1 | 3 | out 327123
+B1b stopped 0
+B2b stopped 0
+B3b stopped 0
+
+[exited with code 0]

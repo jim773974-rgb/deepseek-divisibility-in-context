@@ -111,7 +111,7 @@ def run(a):
     meta = dict(vars(a), triggers=sorted(trig), miss=budget.miss, hit=budget.hit, out=budget.out,
                 finished_at=time.strftime("%F %T"))
     meta.pop("cmd", None)
-    json.dump(meta, open(os.path.join(a.out, "meta.json"), "w"), ensure_ascii=False)
+    json.dump(meta, open(os.path.join(a.out, "meta.json"), "w", encoding="utf-8"), ensure_ascii=False)
     print(a.name, "done miss", budget.miss, "hit", budget.hit, "out", budget.out, flush=True)
 
 
@@ -127,7 +127,7 @@ def load(d):
 def report(dirs):
     print("name | model/effort | trigger: fail/all (clean fail/clean n) | states calc fail/ok | other drift turns | slip turns")
     for d in dirs:
-        m = json.load(open(os.path.join(d, "meta.json")))
+        m = json.load(open(os.path.join(d, "meta.json"), encoding="utf-8"))
         sess = load(d)
         parts, calc_f, calc_o, nf, no = [], 0, 0, 0, 0
         for t in m["triggers"]:

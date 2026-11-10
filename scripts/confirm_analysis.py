@@ -85,7 +85,7 @@ for d in ("D1", "D2", "D3"):
     from collections import Counter
     c = Counter(r.get("verdict", "API报错") for r in rs)
     D[d] = (c["否"], c["是"] + c["否"])
-    print(f"  {d} {json.load(open(os.path.join(R, 'conf', d, 'meta.json')))['direct']}  {dict(c)}  错误（答否）{c['否']}/{c['是'] + c['否']}")
+    print(f"  {d} {json.load(open(os.path.join(R, 'conf', d, 'meta.json'), encoding="utf-8"))['direct']}  {dict(c)}  错误（答否）{c['否']}/{c['是'] + c['否']}")
 RR = {}
 for d in ("R4", "R6", "NC1", "NC2"):
     fp = os.path.join(R, "conf", d, "calls.jsonl")
@@ -114,6 +114,18 @@ if all(k in D for k in ("D1", "D2")) and all(k in RR for k in ("R4", "R6")):
     h4 = fisher(D["D2"][0], D["D2"][1] - D["D2"][0], RR["R4"][0], RR["R4"][1] - RR["R4"][0])
     adj = multipletests([h3, h4], method="holm")[1]
     print(f"  H3（D1 vs R6）p={h3:.3g}，Holm {adj[0]:.3g}；H4（D2 vs R4）p={h4:.3g}，Holm {adj[1]:.3g}")
+    def newcombe(k1, n1, k2, n2, z=1.96):
+        from math import sqrt
+        def wil(k, n):
+            p = k / n; den = 1 + z * z / n
+            c = (p + z * z / (2 * n)) / den; h = z * sqrt(p * (1 - p) / n + z * z / (4 * n * n)) / den
+            return c - h, c + h
+        p1, p2 = k1 / n1, k2 / n2; l1, u1 = wil(k1, n1); l2, u2 = wil(k2, n2)
+        return p1 - p2, p1 - p2 - sqrt((p1 - l1) ** 2 + (u2 - p2) ** 2), p1 - p2 + sqrt((u1 - p1) ** 2 + (p2 - l2) ** 2)
+    for lab, a_, b_ in (("任务−直接问 26/13", RR["R6"], D["D1"]), ("任务−直接问 36/9", RR["R4"], D["D2"]),
+                        ("R6−A6（跨时间）", RR["R6"], A["A6"][:2]), ("R4−A4（跨时间）", RR["R4"], A["A4"][:2])):
+        d_, lo, hi = newcombe(a_[0], a_[1], b_[0], b_[1])
+        print(f"  效应量 {lab}: {d_*100:+.1f} 个百分点，Newcombe 95% CI {lo*100:+.1f} 至 {hi*100:+.1f}")
     print(f"  跨时间参考：R6 {RR['R6'][0]}/{RR['R6'][1]} vs A6 {A['A6'][0]}/{A['A6'][1]} p={fisher(RR['R6'][0], RR['R6'][1]-RR['R6'][0], A['A6'][0], A['A6'][1]-A['A6'][0]):.3g}；"
           f"R4 {RR['R4'][0]}/{RR['R4'][1]} vs A4 {A['A4'][0]}/{A['A4'][1]} p={fisher(RR['R4'][0], RR['R4'][1]-RR['R4'][0], A['A4'][0], A['A4'][1]-A['A4'][0]):.3g}")
 

@@ -1,0 +1,30 @@
+balance before A: 20.85
+26 26 periodic errors 0 / 100 api errors 0
+36 36 periodic errors 0 / 100 api errors 0
+[1]   Done                    python3 confirm_run.py run --period 36 --turn 36 --out conf/A1
+[5]-  Done                    python3 confirm_run.py run --period 26 --turn 26 --out conf/A5
+9 36 periodic errors 25 / 100 api errors 0
+13 26 periodic errors 51 / 100 api errors 0
+12 36 periodic errors 0 / 100 api errors 0
+18 36 periodic errors 0 / 100 api errors 0
+[2]   Done                    python3 confirm_run.py run --period 18 --turn 36 --out conf/A2
+[3]   Done                    python3 confirm_run.py run --period 12 --turn 36 --out conf/A3
+[4]-  Done                    python3 confirm_run.py run --period 9 --turn 36 --out conf/A4
+[6]+  Done                    python3 confirm_run.py run --period 13 --turn 26 --out conf/A6
+balance after A: 20.85
+B3 done miss 320695 hit 13179158 out 480916
+B2 done miss 313542 hit 13037855 out 478446
+B1 done miss 309113 hit 13063590 out 475373
+[1]   Done                    python3 drift_v4.py run --name B1 --period 36 --turns 36 --runs 20 --parallel 10 --min-balance 1.5 --out conf/B1
+[2]-  Done                    python3 drift_v4.py run --name B2 --period 18 --turns 36 --runs 20 --parallel 10 --min-balance 1.5 --out conf/B2
+[3]+  Done                    python3 drift_v4.py run --name B3 --period 12 --turns 36 --runs 20 --parallel 10 --min-balance 1.5 --out conf/B3
+balance after B: 3.48
+name | model/effort | trigger: fail/all (clean fail/clean n) | states calc fail/ok | other drift turns | slip turns
+B1 | deepseek-flash low seed 0 | t36: 0/10 (0/8) | calc 0/0, 0/10 | 1 | 3 | out 475373
+B2 | deepseek-flash low seed 0 | t18: 0/15 (0/14); t36: 0/10 (0/9) | calc 0/0, 7/25 | 1 | 2 | out 478446
+B3 | deepseek-flash low seed 0 | t12: 0/20 (0/20); t24: 0/10 (0/9); t36: 3/10 (2/8) | calc 0/3, 2/37 | 2 | 1 | out 480916
+B1 stopped 10
+B2 stopped 10
+B3 stopped 10
+
+[exited with code 0]

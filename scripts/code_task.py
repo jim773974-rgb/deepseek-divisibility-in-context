@@ -167,7 +167,7 @@ def run(a):
     os.makedirs(a.out, exist_ok=True)
     with ThreadPoolExecutor(a.parallel) as ex:
         list(ex.map(lambda i: run_one(i, a), range(a.runs)))
-    json.dump(vars(a), open(os.path.join(a.out, "meta.json"), "w"))
+    json.dump(vars(a), open(os.path.join(a.out, "meta.json"), "w", encoding="utf-8"))
 
 
 def report(d):

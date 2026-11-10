@@ -241,6 +241,20 @@ for d, p in dirs:
             loose_hits.append((d, s["id"], r["reasoning"][max(0, m_.start() - 40): m_.end() + 40].replace("\n", " ")))
 print(f"  批次: {[d for d, _ in dirs]}（均为自然观察的完整会话，不含第 34 轮重跑样本）")
 print(f"  严格正则：写错 {strict_tot[True][0]}/{strict_tot[True][1]}，写对 {strict_tot[False][0]}/{strict_tot[False][1]}；无思考内容被排除 {nores}")
+# 报告 5.2 节的两项校验：写错样本中“提到规则”的次数，以及“2N 与 N 相距 15 个字符以内同时出现”的次数
+mention = near_cnt = n_fail = 0
+rule_words = re.compile(r"倍数|multiple|盘点|audit|审计")
+for d, p in dirs:
+    t = 2 * p
+    near = re.compile(rf"{t}[^。\n]{{0,15}}{p}|{p}[^。\n]{{0,15}}{t}")
+    for s in load(d):
+        r = s["t"].get(t)
+        if not r or not r["reply"].strip() or not r.get("reasoning") or not fail(r):
+            continue
+        n_fail += 1
+        mention += bool(rule_words.search(r["reasoning"]))
+        near_cnt += bool(near.search(r["reasoning"]))
+print(f"  写错 {n_fail} 次中：思考提到规则（匹配 倍数/multiple/盘点/audit/审计）{mention} 次；2N 与 N 相距 15 字符内同时出现 {near_cnt} 次")
 print(f"  宽松正则在写错样本中命中 {len(loose_hits)} 次，节选：")
 for h in loose_hits[:12]:
     print("   ", h)

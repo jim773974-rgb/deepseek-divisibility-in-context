@@ -4,7 +4,7 @@ import urllib.error
 import urllib.request
 
 here = os.path.dirname(os.path.abspath(__file__))
-key = open(os.path.join(here, ".deepseek_key")).read().strip()
+key = open(os.path.join(here, ".deepseek_key"), encoding="utf-8").read().strip()
 
 for path in ("/models", "/user/balance"):
     req = urllib.request.Request(

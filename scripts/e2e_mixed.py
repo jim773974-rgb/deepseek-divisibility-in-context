@@ -34,7 +34,7 @@ def sessions(d):
 
 
 def setup(d):
-    m = json.load(open(os.path.join(R, d, "meta.json")))
+    m = json.load(open(os.path.join(R, d, "meta.json"), encoding="utf-8"))
     base, v2 = mods()
     if "wording" in m:
         import drift_v3

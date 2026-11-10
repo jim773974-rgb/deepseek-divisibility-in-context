@@ -1,0 +1,18 @@
+start C 2026-11-10 15:19:24 balance 21.47
+36 是 9 的倍数吗？只回答“是”或“否”。 {'是': 100}
+36 是 18 的倍数吗？只回答“是”或“否”。 {'是': 100}
+26 是 13 的倍数吗？只回答“是”或“否”。 {'是': 100}
+[1]   Done                    python3 confirm_run.py run --direct "26 是 13 的倍数吗？只回答“是”或“否”。" --n 100 --parallel 4 --out conf/D1
+[2]   Done                    python3 confirm_run.py run --direct "36 是 9 的倍数吗？只回答“是”或“否”。" --n 100 --parallel 4 --out conf/D2
+[3]   Done                    python3 confirm_run.py run --direct "36 是 18 的倍数吗？只回答“是”或“否”。" --n 100 --parallel 4 --out conf/D3
+7 36 periodic errors 0 / 100 api errors 0
+9 36 periodic errors 30 / 100 api errors 0
+[4]   Done                    python3 confirm_run.py run --period 9 --turn 36 --n 100 --parallel 4 --out conf/R4
+[6]-  Done                    python3 confirm_run.py run --period 7 --turn 36 --n 100 --parallel 4 --out conf/NC1
+13 27 periodic errors 0 / 100 api errors 0
+13 26 periodic errors 49 / 100 api errors 0
+[5]-  Done                    python3 confirm_run.py run --period 13 --turn 26 --n 100 --parallel 4 --out conf/R6
+[7]+  Done                    python3 confirm_run.py run --period 13 --turn 27 --n 100 --parallel 4 --out conf/NC2
+end C 2026-11-10 15:22:44 balance 19.12
+
+[exited with code 0]

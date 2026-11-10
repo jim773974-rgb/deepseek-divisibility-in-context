@@ -67,7 +67,7 @@ def run_direct(a):
         for r in res:
             f.write(json.dumps(r, ensure_ascii=False) + "\n")
     json.dump({"direct": a.direct, "n": a.n, "finished_at": time.strftime("%F %T")},
-              open(os.path.join(a.out, "meta.json"), "w"), ensure_ascii=False)
+              open(os.path.join(a.out, "meta.json"), "w", encoding="utf-8"), ensure_ascii=False)
     from collections import Counter
     print(a.direct, dict(Counter(r.get("verdict", "API报错") for r in res)), flush=True)
 
@@ -85,7 +85,7 @@ def run(a):
         for r in res:
             f.write(json.dumps(r, ensure_ascii=False) + "\n")
     json.dump({"period": a.period, "turn": a.turn, "n": a.n, "triggers": trig, "system": system, "user": user,
-               "finished_at": time.strftime("%F %T")}, open(os.path.join(a.out, "meta.json"), "w"), ensure_ascii=False)
+               "finished_at": time.strftime("%F %T")}, open(os.path.join(a.out, "meta.json"), "w", encoding="utf-8"), ensure_ascii=False)
     ok = [r for r in res if "error" not in r]
     print(a.period, a.turn, "periodic errors", sum("mod17_forgotten" in r["drift"] for r in ok), "/", len(ok), "api errors", len(res) - len(ok), flush=True)
 

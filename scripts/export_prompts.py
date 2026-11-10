@@ -81,7 +81,7 @@ def export(out_dir):
         base, v2 = fresh_modules()
         import drift_v3
         importlib.reload(drift_v3)
-        m = json.load(open(os.path.join(R, d, "meta.json")))
+        m = json.load(open(os.path.join(R, d, "meta.json"), encoding="utf-8"))
         drift_v3.configure(m["period"], m["wording"])
         init, script = base.build_script(m["turns"])
         turns = [{"turn": e["turn"], "user": (base.first_prompt(init) if i == 0 else "") + base.render(e)} for i, e in enumerate(script)]
@@ -95,7 +95,7 @@ def export(out_dir):
             base, v2 = fresh_modules()
             import drift_v4
             importlib.reload(drift_v4)
-            m = json.load(open(os.path.join(R, d, "meta.json")))
+            m = json.load(open(os.path.join(R, d, "meta.json"), encoding="utf-8"))
             ns = argparse.Namespace(**{k: m[k] for k in ("period", "turns", "list_turns", "active_from", "seed")})
             drift_v4.configure(ns)
             iv = drift_v4.parse_intervene(m["intervene"])

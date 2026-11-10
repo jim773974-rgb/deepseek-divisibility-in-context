@@ -80,7 +80,7 @@ def run(a):
         list(ex.map(lambda i: run_one(i, a, budget), range(a.runs)))
     meta = {"period": a.period, "wording": a.wording, "runs": a.runs, "turns": a.turns, "miss": budget.miss,
             "hit": budget.hit, "out": budget.out, "finished_at": time.strftime("%F %T")}
-    json.dump(meta, open(os.path.join(a.out, "meta.json"), "w"), ensure_ascii=False)
+    json.dump(meta, open(os.path.join(a.out, "meta.json"), "w", encoding="utf-8"), ensure_ascii=False)
     print(json.dumps(meta, ensure_ascii=False), flush=True)
 
 
@@ -94,7 +94,7 @@ def fisher(a, b, c, d):
 def report(dirs):
     summary = {}
     for d in dirs:
-        meta = json.load(open(os.path.join(d, "meta.json")))
+        meta = json.load(open(os.path.join(d, "meta.json"), encoding="utf-8"))
         p = meta["period"]
         recs = []
         for fn in sorted(os.listdir(d)):
