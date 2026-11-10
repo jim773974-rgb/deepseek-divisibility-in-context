@@ -656,11 +656,11 @@ max 档第二批的最大输出长度设为 6000 token，思考过长导致部�
 
 [2] Li, Y., Krishnan, R., & Padman, R. (2025). Time-To-Inconsistency: A Survival Analysis of Large Language Model Robustness to Adversarial Attacks. arXiv:2510.02712. https://arxiv.org/abs/2510.02712
 
-[3] Thought Editing: Steering Models by Editing Their Chain of Thought. LessWrong. https://www.lesswrong.com/posts/KXR5FNs4hHT5sMRti/thought-editing-steering-models-by-editing-their-chain-of
+[3] de la Fuente, A., & Engels, J. (2026-02-03). Thought Editing: Steering Models by Editing Their Chain of Thought. LessWrong. https://www.lesswrong.com/posts/KXR5FNs4hHT5sMRti/thought-editing-steering-models-by-editing-their-chain-of
 
 [4] Vasudev, R., Russak, M., Bikel, D., & Alshikh, W. (2026). The Intervention Paradox: Accurate Failure Prediction in Agents Does Not Imply Effective Failure Prevention. arXiv:2602.03338. https://arxiv.org/abs/2602.03338
 
-[5] Takehi, R., Teoh, J., Zhang, A., & Khattab, O. (2026). Sparks of Weight-Space Programming. MIT CSAIL 研究文章。本报告引用的是二手报道和独立复现页：https://learnetto.com/ai-resources/gpt-6-astra-weight-space-programming ，https://huggingface.co/KidIkaros/qwen3.5-0.8b-loop-fix
+[5] Takehi, R., Teoh, J., Zhang, A., & Khattab, O. (2026-11-02). Sparks of Weight-Space Programming: LLMs can natively read & write neural network weights. MIT CSAIL 研究文章。https://rikiyat.github.io/blog/weight-space-programming/
 
 
 ## 附录 A 修订记录
@@ -678,7 +678,7 @@ max 档第二批的最大输出长度设为 6000 token，思考过长导致部�
 | 页码未实际显示 | 页脚改用带缓存结果的复合域（PAGE、NUMPAGES），不再依赖打开时更新 |
 | 补充仓库和预登记提交链接 | 9.7、9.8 和附录 B 加入完整链接；注明推送时间取自 GitHub 活动记录，未经其他独立时间戳验证 |
 
-尚未处理：参考文献 [3] 的作者和日期、[5] 改引原始文章，需联网核实后再改（本次修订时无法访问网页）。
+| 参考文献 [3] 缺作者和日期；[5] 引的是二手报道 | [3] 补上作者和发布日期；[5] 改引原始文章（均已打开原页面核对） |
 
 ### 第 7 版（第四次验证实验）
 
